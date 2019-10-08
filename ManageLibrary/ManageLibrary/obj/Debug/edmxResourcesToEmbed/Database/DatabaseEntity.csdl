@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ManageLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUTHOR">
+    <Key>
+      <PropertyRef Name="idAuthor" />
+    </Key>
+    <Property Name="idAuthor" Type="Guid" Nullable="false" />
+    <Property Name="nameAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BOOKS" Relationship="Self.FK_BOOKS_AUTHORS" FromRole="AUTHORS" ToRole="BOOKS" />
+  </EntityType>
+  <EntityType Name="BOOK">
+    <Key>
+      <PropertyRef Name="idBook" />
+    </Key>
+    <Property Name="idBook" Type="Guid" Nullable="false" />
+    <Property Name="nameBook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="yearRealeas" Type="Int32" />
+    <Property Name="idPublisher" Type="Guid" />
+    <Property Name="idAuthor" Type="Guid" />
+    <Property Name="idTypeOfBook" Type="Guid" />
+    <Property Name="numberBook" Type="Int32" />
+    <NavigationProperty Name="AUTHOR" Relationship="Self.FK_BOOKS_AUTHORS" FromRole="BOOKS" ToRole="AUTHORS" />
+    <NavigationProperty Name="PUBLISHER" Relationship="Self.FK_BOOKS_PUBLISHERS" FromRole="BOOKS" ToRole="PUBLISHERS" />
+    <NavigationProperty Name="TYPESOFBOOK" Relationship="Self.FK_BOOKS_TYPESOFBOOKS" FromRole="BOOKS" ToRole="TYPESOFBOOKS" />
+    <NavigationProperty Name="DETAIL_BORROW" Relationship="Self.FK_DETAIL_BORROW_BOOKS" FromRole="BOOKS" ToRole="DETAIL_BORROW" />
+  </EntityType>
+  <EntityType Name="BORROW">
+    <Key>
+      <PropertyRef Name="idBorrow" />
+    </Key>
+    <Property Name="idBorrow" Type="Guid" Nullable="false" />
+    <Property Name="idCard" Type="Guid" Nullable="false" />
+    <Property Name="moneyDesposit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="numberBorrow" Type="Int32" />
+    <Property Name="borrowDate" Type="DateTime" Precision="0" />
+    <Property Name="announcePayDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CARD" Relationship="Self.FK_BORROW_CARDS" FromRole="BORROW" ToRole="CARDS" />
+    <NavigationProperty Name="DETAIL_BORROW" Relationship="Self.FK_DETAIL_BORROW_BORROW" FromRole="BORROW" ToRole="DETAIL_BORROW" />
+    <NavigationProperty Name="PAYs" Relationship="Self.FK_PAY_BORROW" FromRole="BORROW" ToRole="PAY" />
+  </EntityType>
+  <EntityType Name="CARD">
+    <Key>
+      <PropertyRef Name="idCard" />
+    </Key>
+    <Property Name="idCard" Type="Guid" Nullable="false" />
+    <Property Name="realeassDate" Type="DateTime" Precision="0" />
+    <Property Name="idReader" Type="Guid" />
+    <Property Name="expiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="BORROWs" Relationship="Self.FK_BORROW_CARDS" FromRole="CARDS" ToRole="BORROW" />
+    <NavigationProperty Name="READER" Relationship="Self.FK_CARDS_READERS" FromRole="CARDS" ToRole="READERS" />
+  </EntityType>
+  <EntityType Name="CLASS">
+    <Key>
+      <PropertyRef Name="idClass" />
+    </Key>
+    <Property Name="idClass" Type="Guid" Nullable="false" />
+    <Property Name="nameClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lever" Type="Int32" />
+    <NavigationProperty Name="READERS" Relationship="Self.FK_READERS_CLASSES" FromRole="CLASSES" ToRole="READERS" />
+  </EntityType>
+  <EntityType Name="DETAIL_BORROW">
+    <Key>
+      <PropertyRef Name="idDetailBorrow" />
+    </Key>
+    <Property Name="idDetailBorrow" Type="Guid" Nullable="false" />
+    <Property Name="idBorrow" Type="Guid" />
+    <Property Name="idBook" Type="Guid" />
+    <Property Name="status" Type="Int32" />
+    <NavigationProperty Name="BOOK" Relationship="Self.FK_DETAIL_BORROW_BOOKS" FromRole="DETAIL_BORROW" ToRole="BOOKS" />
+    <NavigationProperty Name="BORROW" Relationship="Self.FK_DETAIL_BORROW_BORROW" FromRole="DETAIL_BORROW" ToRole="BORROW" />
+  </EntityType>
+  <EntityType Name="DETAIL_PAY">
+    <Key>
+      <PropertyRef Name="idPay" />
+      <PropertyRef Name="idBook" />
+    </Key>
+    <Property Name="idPay" Type="Guid" Nullable="false" />
+    <Property Name="idBook" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="PAY" Relationship="Self.FK_DETAIL_PAYCARDS_PAYCARDS" FromRole="DETAIL_PAY" ToRole="PAY" />
+  </EntityType>
+  <EntityType Name="PAY">
+    <Key>
+      <PropertyRef Name="idPayCard" />
+    </Key>
+    <Property Name="idPayCard" Type="Guid" Nullable="false" />
+    <Property Name="payDate" Type="DateTime" Precision="0" />
+    <Property Name="numberPay" Type="Int32" />
+    <Property Name="idBorrow" Type="Guid" />
+    <NavigationProperty Name="BORROW" Relationship="Self.FK_PAY_BORROW" FromRole="PAY" ToRole="BORROW" />
+    <NavigationProperty Name="DETAIL_PAY" Relationship="Self.FK_DETAIL_PAYCARDS_PAYCARDS" FromRole="PAY" ToRole="DETAIL_PAY" />
+  </EntityType>
+  <EntityType Name="PUBLISHER">
+    <Key>
+      <PropertyRef Name="idPublisher" />
+    </Key>
+    <Property Name="idPublisher" Type="Guid" Nullable="false" />
+    <Property Name="namePublisher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="phonenumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="BOOKS" Relationship="Self.FK_BOOKS_PUBLISHERS" FromRole="PUBLISHERS" ToRole="BOOKS" />
+  </EntityType>
+  <EntityType Name="READER">
+    <Key>
+      <PropertyRef Name="idReader" />
+    </Key>
+    <Property Name="idReader" Type="Guid" Nullable="false" />
+    <Property Name="nameReader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sex" Type="Boolean" />
+    <Property Name="birthday" Type="DateTime" Precision="0" />
+    <Property Name="idClass" Type="Guid" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CARDS" Relationship="Self.FK_CARDS_READERS" FromRole="READERS" ToRole="CARDS" />
+    <NavigationProperty Name="CLASS" Relationship="Self.FK_READERS_CLASSES" FromRole="READERS" ToRole="CLASSES" />
+  </EntityType>
+  <EntityType Name="TYPESOFBOOK">
+    <Key>
+      <PropertyRef Name="idTypeOfBook" />
+    </Key>
+    <Property Name="idTypeOfBook" Type="Guid" Nullable="false" />
+    <Property Name="nameTypeOfBook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BOOKS" Relationship="Self.FK_BOOKS_TYPESOFBOOKS" FromRole="TYPESOFBOOKS" ToRole="BOOKS" />
+  </EntityType>
+  <Association Name="FK_BOOKS_AUTHORS">
+    <End Role="AUTHORS" Type="Self.AUTHOR" Multiplicity="0..1" />
+    <End Role="BOOKS" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHORS">
+        <PropertyRef Name="idAuthor" />
+      </Principal>
+      <Dependent Role="BOOKS">
+        <PropertyRef Name="idAuthor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOKS_PUBLISHERS">
+    <End Role="PUBLISHERS" Type="Self.PUBLISHER" Multiplicity="0..1" />
+    <End Role="BOOKS" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PUBLISHERS">
+        <PropertyRef Name="idPublisher" />
+      </Principal>
+      <Dependent Role="BOOKS">
+        <PropertyRef Name="idPublisher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOKS_TYPESOFBOOKS">
+    <End Role="TYPESOFBOOKS" Type="Self.TYPESOFBOOK" Multiplicity="0..1" />
+    <End Role="BOOKS" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPESOFBOOKS">
+        <PropertyRef Name="idTypeOfBook" />
+      </Principal>
+      <Dependent Role="BOOKS">
+        <PropertyRef Name="idTypeOfBook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETAIL_BORROW_BOOKS">
+    <End Role="BOOKS" Type="Self.BOOK" Multiplicity="0..1" />
+    <End Role="DETAIL_BORROW" Type="Self.DETAIL_BORROW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOKS">
+        <PropertyRef Name="idBook" />
+      </Principal>
+      <Dependent Role="DETAIL_BORROW">
+        <PropertyRef Name="idBook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BORROW_CARDS">
+    <End Role="CARDS" Type="Self.CARD" Multiplicity="1" />
+    <End Role="BORROW" Type="Self.BORROW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARDS">
+        <PropertyRef Name="idCard" />
+      </Principal>
+      <Dependent Role="BORROW">
+        <PropertyRef Name="idCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETAIL_BORROW_BORROW">
+    <End Role="BORROW" Type="Self.BORROW" Multiplicity="0..1" />
+    <End Role="DETAIL_BORROW" Type="Self.DETAIL_BORROW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BORROW">
+        <PropertyRef Name="idBorrow" />
+      </Principal>
+      <Dependent Role="DETAIL_BORROW">
+        <PropertyRef Name="idBorrow" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAY_BORROW">
+    <End Role="BORROW" Type="Self.BORROW" Multiplicity="0..1" />
+    <End Role="PAY" Type="Self.PAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BORROW">
+        <PropertyRef Name="idBorrow" />
+      </Principal>
+      <Dependent Role="PAY">
+        <PropertyRef Name="idBorrow" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CARDS_READERS">
+    <End Role="READERS" Type="Self.READER" Multiplicity="0..1" />
+    <End Role="CARDS" Type="Self.CARD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="READERS">
+        <PropertyRef Name="idReader" />
+      </Principal>
+      <Dependent Role="CARDS">
+        <PropertyRef Name="idReader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_READERS_CLASSES">
+    <End Role="CLASSES" Type="Self.CLASS" Multiplicity="0..1" />
+    <End Role="READERS" Type="Self.READER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLASSES">
+        <PropertyRef Name="idClass" />
+      </Principal>
+      <Dependent Role="READERS">
+        <PropertyRef Name="idClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETAIL_PAYCARDS_PAYCARDS">
+    <End Role="PAY" Type="Self.PAY" Multiplicity="1" />
+    <End Role="DETAIL_PAY" Type="Self.DETAIL_PAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAY">
+        <PropertyRef Name="idPayCard" />
+      </Principal>
+      <Dependent Role="DETAIL_PAY">
+        <PropertyRef Name="idPay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ManageLibraryEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUTHORS" EntityType="Self.AUTHOR" />
+    <EntitySet Name="BOOKS" EntityType="Self.BOOK" />
+    <EntitySet Name="BORROWs" EntityType="Self.BORROW" />
+    <EntitySet Name="CARDS" EntityType="Self.CARD" />
+    <EntitySet Name="CLASSES" EntityType="Self.CLASS" />
+    <EntitySet Name="DETAIL_BORROW" EntityType="Self.DETAIL_BORROW" />
+    <EntitySet Name="DETAIL_PAY" EntityType="Self.DETAIL_PAY" />
+    <EntitySet Name="PAYs" EntityType="Self.PAY" />
+    <EntitySet Name="PUBLISHERS" EntityType="Self.PUBLISHER" />
+    <EntitySet Name="READERS" EntityType="Self.READER" />
+    <EntitySet Name="TYPESOFBOOKS" EntityType="Self.TYPESOFBOOK" />
+    <AssociationSet Name="FK_BOOKS_AUTHORS" Association="Self.FK_BOOKS_AUTHORS">
+      <End Role="AUTHORS" EntitySet="AUTHORS" />
+      <End Role="BOOKS" EntitySet="BOOKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOKS_PUBLISHERS" Association="Self.FK_BOOKS_PUBLISHERS">
+      <End Role="PUBLISHERS" EntitySet="PUBLISHERS" />
+      <End Role="BOOKS" EntitySet="BOOKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOKS_TYPESOFBOOKS" Association="Self.FK_BOOKS_TYPESOFBOOKS">
+      <End Role="TYPESOFBOOKS" EntitySet="TYPESOFBOOKS" />
+      <End Role="BOOKS" EntitySet="BOOKS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETAIL_BORROW_BOOKS" Association="Self.FK_DETAIL_BORROW_BOOKS">
+      <End Role="BOOKS" EntitySet="BOOKS" />
+      <End Role="DETAIL_BORROW" EntitySet="DETAIL_BORROW" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BORROW_CARDS" Association="Self.FK_BORROW_CARDS">
+      <End Role="CARDS" EntitySet="CARDS" />
+      <End Role="BORROW" EntitySet="BORROWs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETAIL_BORROW_BORROW" Association="Self.FK_DETAIL_BORROW_BORROW">
+      <End Role="BORROW" EntitySet="BORROWs" />
+      <End Role="DETAIL_BORROW" EntitySet="DETAIL_BORROW" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAY_BORROW" Association="Self.FK_PAY_BORROW">
+      <End Role="BORROW" EntitySet="BORROWs" />
+      <End Role="PAY" EntitySet="PAYs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CARDS_READERS" Association="Self.FK_CARDS_READERS">
+      <End Role="READERS" EntitySet="READERS" />
+      <End Role="CARDS" EntitySet="CARDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_READERS_CLASSES" Association="Self.FK_READERS_CLASSES">
+      <End Role="CLASSES" EntitySet="CLASSES" />
+      <End Role="READERS" EntitySet="READERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETAIL_PAYCARDS_PAYCARDS" Association="Self.FK_DETAIL_PAYCARDS_PAYCARDS">
+      <End Role="PAY" EntitySet="PAYs" />
+      <End Role="DETAIL_PAY" EntitySet="DETAIL_PAY" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
