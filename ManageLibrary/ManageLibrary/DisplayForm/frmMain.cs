@@ -37,16 +37,14 @@ namespace ManageLibrary
             catch (Exception ex)
             {
             }
-        }
-
-        
+        }   
 
         private void Main_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void groupControl1_Paint_1(object sender, PaintEventArgs e)
+        private void btnWorkArea_Click(object sender, EventArgs e)
         {
             try
             {
@@ -64,7 +62,7 @@ namespace ManageLibrary
             }
         }
 
-        private void groupControl1_Paint_2(object sender, PaintEventArgs e)
+        private void btnBook_Click(object sender, EventArgs e)
         {
             try
             {
@@ -80,11 +78,6 @@ namespace ManageLibrary
             catch (Exception ex)
             {
             }
-        }
-
-        private void groupControl1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 
