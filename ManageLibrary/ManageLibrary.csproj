@@ -158,6 +158,21 @@
     <Compile Include="Database\DETAIL_PAY.cs">
       <DependentUpon>DatabaseEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\MANAGE_DECENTRALIZATION.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MANAGE_USER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MANAGE_USERGROUP.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MANAGE_USERGROUP_USER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\MONITOR.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\PAY.cs">
       <DependentUpon>DatabaseEntity.tt</DependentUpon>
     </Compile>
@@ -165,6 +180,9 @@
       <DependentUpon>DatabaseEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\READER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sysdiagram.cs">
       <DependentUpon>DatabaseEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\TYPESOFBOOK.cs">

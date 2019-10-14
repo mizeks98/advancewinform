@@ -15,33 +15,29 @@ namespace ManageLibrary.Database
 using System;
     using System.Collections.Generic;
     
-public partial class CARD
+public partial class MANAGE_USER
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public CARD()
+    public MANAGE_USER()
     {
 
-        this.BORROWs = new HashSet<BORROW>();
+        this.MANAGE_USERGROUP_USER = new HashSet<MANAGE_USERGROUP_USER>();
 
     }
 
 
-    public System.Guid idCard { get; set; }
+    public string IdUser { get; set; }
 
-    public Nullable<System.DateTime> realeassDate { get; set; }
+    public string PassWord { get; set; }
 
-    public Nullable<System.Guid> idReader { get; set; }
-
-    public Nullable<System.DateTime> expiryDate { get; set; }
+    public string Action { get; set; }
 
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<BORROW> BORROWs { get; set; }
-
-    public virtual READER READER { get; set; }
+    public virtual ICollection<MANAGE_USERGROUP_USER> MANAGE_USERGROUP_USER { get; set; }
 
 }
 

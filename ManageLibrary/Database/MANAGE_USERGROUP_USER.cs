@@ -15,27 +15,20 @@ namespace ManageLibrary.Database
 using System;
     using System.Collections.Generic;
     
-public partial class TYPESOFBOOK
+public partial class MANAGE_USERGROUP_USER
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public TYPESOFBOOK()
-    {
+    public string IdUser { get; set; }
 
-        this.BOOKS = new HashSet<BOOK>();
+    public string IdGroup { get; set; }
 
-    }
-
-
-    public System.Guid idTypeOfBook { get; set; }
-
-    public string nameTypeOfBook { get; set; }
+    public string Note { get; set; }
 
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual MANAGE_USER MANAGE_USER { get; set; }
 
-    public virtual ICollection<BOOK> BOOKS { get; set; }
+    public virtual MANAGE_USERGROUP MANAGE_USERGROUP { get; set; }
 
 }
 

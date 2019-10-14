@@ -26,6 +26,16 @@
         <AssociationConnector Association="ManageLibraryModel.FK_CARDS_READERS" ManuallyRouted="false" />
         <AssociationConnector Association="ManageLibraryModel.FK_READERS_CLASSES" ManuallyRouted="false" />
         <AssociationConnector Association="ManageLibraryModel.FK_DETAIL_PAYCARDS_PAYCARDS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ManageLibraryModel.MANAGE_DECENTRALIZATION" Width="1.5" PointX="3" PointY="11.375" />
+        <EntityTypeShape EntityType="ManageLibraryModel.MANAGE_USER" Width="1.5" PointX="0.75" PointY="17.5" />
+        <EntityTypeShape EntityType="ManageLibraryModel.MANAGE_USERGROUP" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="ManageLibraryModel.MANAGE_USERGROUP_USER" Width="1.5" PointX="3" PointY="14.375" />
+        <EntityTypeShape EntityType="ManageLibraryModel.MONITOR" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="ManageLibraryModel.sysdiagram" Width="1.5" PointX="5.75" PointY="9.75" />
+        <AssociationConnector Association="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP" />
+        <AssociationConnector Association="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MONITOR" />
+        <AssociationConnector Association="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USER" />
+        <AssociationConnector Association="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

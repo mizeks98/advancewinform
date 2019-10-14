@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManageLibrary.Database;
 
 namespace ManageLibrary
 {
     public partial class Login : Form
     {
+        private ManageLibraryEntities1 db = new ManageLibraryEntities1();
         public Login()
         {
             InitializeComponent();
@@ -26,13 +28,22 @@ namespace ManageLibrary
         {
             String user = txtUsername.Text;
             String pass = txtPassword.Text;
-            if (user == "admin" && pass == "123")
+            var login = db.MANAGE_USER.Where(p => p.IdUser.Equals(user) && p.PassWord.Equals(pass));
+            if (login.Count() != 0)
             {
+                this.Hide();
                 Main main = new Main();
-                main.Show();
+                main.ShowDialog();
             }
             else
-                MessageBox.Show("Username or Password is incorrect!");
+                MessageBox.Show("Username or Password is incorrect! Please try again!");
+        }
+        private void chkb_showpass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkb_showpass.Checked)
+                txtPassword.PasswordChar = (char)0;
+            else
+                txtPassword.PasswordChar = '*';
         }
     }
 }

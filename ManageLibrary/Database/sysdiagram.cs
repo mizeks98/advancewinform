@@ -15,27 +15,18 @@ namespace ManageLibrary.Database
 using System;
     using System.Collections.Generic;
     
-public partial class TYPESOFBOOK
+public partial class sysdiagram
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public TYPESOFBOOK()
-    {
+    public string name { get; set; }
 
-        this.BOOKS = new HashSet<BOOK>();
+    public int principal_id { get; set; }
 
-    }
+    public int diagram_id { get; set; }
 
+    public Nullable<int> version { get; set; }
 
-    public System.Guid idTypeOfBook { get; set; }
-
-    public string nameTypeOfBook { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<BOOK> BOOKS { get; set; }
+    public byte[] definition { get; set; }
 
 }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ManageLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ManageLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AUTHORS">
           <Key>
             <PropertyRef Name="idAuthor" />
@@ -69,6 +69,47 @@
           <Property Name="idPay" Type="uniqueidentifier" Nullable="false" />
           <Property Name="idBook" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="MANAGE_DECENTRALIZATION">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdGroup" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdMonitor" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Licensed" Type="bit" />
+        </EntityType>
+        <EntityType Name="MANAGE_USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="PassWord" Type="nchar" MaxLength="30" />
+          <Property Name="Action" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MANAGE_USERGROUP">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="NameGroup" Type="nchar" MaxLength="30" />
+          <Property Name="Note" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MANAGE_USERGROUP_USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdUser" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdGroup" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Note" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MONITOR">
+          <Key>
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdMonitor" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NameMonitor" Type="nchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="PAY">
           <Key>
             <PropertyRef Name="idPayCard" />
@@ -97,6 +138,16 @@
           <Property Name="birthday" Type="date" />
           <Property Name="idClass" Type="uniqueidentifier" />
           <Property Name="address" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TYPESOFBOOKS">
           <Key>
@@ -201,6 +252,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP">
+          <End Role="MANAGE_USERGROUP" Type="Self.MANAGE_USERGROUP" Multiplicity="1" />
+          <End Role="MANAGE_DECENTRALIZATION" Type="Self.MANAGE_DECENTRALIZATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USERGROUP">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="MANAGE_DECENTRALIZATION">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_DECENTRALIZATION_MONITOR">
+          <End Role="MONITOR" Type="Self.MONITOR" Multiplicity="1" />
+          <End Role="MANAGE_DECENTRALIZATION" Type="Self.MANAGE_DECENTRALIZATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITOR">
+              <PropertyRef Name="IdMonitor" />
+            </Principal>
+            <Dependent Role="MANAGE_DECENTRALIZATION">
+              <PropertyRef Name="IdMonitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_USERGROUP_USER_MANAGE_USER">
+          <End Role="MANAGE_USER" Type="Self.MANAGE_USER" Multiplicity="1" />
+          <End Role="MANAGE_USERGROUP_USER" Type="Self.MANAGE_USERGROUP_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="MANAGE_USERGROUP_USER">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP">
+          <End Role="MANAGE_USERGROUP" Type="Self.MANAGE_USERGROUP" Multiplicity="1" />
+          <End Role="MANAGE_USERGROUP_USER" Type="Self.MANAGE_USERGROUP_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USERGROUP">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="MANAGE_USERGROUP_USER">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PAY_BORROW">
           <End Role="BORROW" Type="Self.BORROW" Multiplicity="0..1" />
           <End Role="PAY" Type="Self.PAY" Multiplicity="*" />
@@ -233,9 +332,15 @@
           <EntitySet Name="CLASSES" EntityType="Self.CLASSES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETAIL_BORROW" EntityType="Self.DETAIL_BORROW" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETAIL_PAY" EntityType="Self.DETAIL_PAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGE_DECENTRALIZATION" EntityType="Self.MANAGE_DECENTRALIZATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGE_USER" EntityType="Self.MANAGE_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGE_USERGROUP" EntityType="Self.MANAGE_USERGROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGE_USERGROUP_USER" EntityType="Self.MANAGE_USERGROUP_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONITOR" EntityType="Self.MONITOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAY" EntityType="Self.PAY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUBLISHERS" EntityType="Self.PUBLISHERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="READERS" EntityType="Self.READERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TYPESOFBOOKS" EntityType="Self.TYPESOFBOOKS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BOOKS_AUTHORS" Association="Self.FK_BOOKS_AUTHORS">
             <End Role="AUTHORS" EntitySet="AUTHORS" />
@@ -269,6 +374,22 @@
             <End Role="PAY" EntitySet="PAY" />
             <End Role="DETAIL_PAY" EntitySet="DETAIL_PAY" />
           </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP" Association="Self.FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP">
+            <End Role="MANAGE_USERGROUP" EntitySet="MANAGE_USERGROUP" />
+            <End Role="MANAGE_DECENTRALIZATION" EntitySet="MANAGE_DECENTRALIZATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_DECENTRALIZATION_MONITOR" Association="Self.FK_MANAGE_DECENTRALIZATION_MONITOR">
+            <End Role="MONITOR" EntitySet="MONITOR" />
+            <End Role="MANAGE_DECENTRALIZATION" EntitySet="MANAGE_DECENTRALIZATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_USERGROUP_USER_MANAGE_USER" Association="Self.FK_MANAGE_USERGROUP_USER_MANAGE_USER">
+            <End Role="MANAGE_USER" EntitySet="MANAGE_USER" />
+            <End Role="MANAGE_USERGROUP_USER" EntitySet="MANAGE_USERGROUP_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP" Association="Self.FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP">
+            <End Role="MANAGE_USERGROUP" EntitySet="MANAGE_USERGROUP" />
+            <End Role="MANAGE_USERGROUP_USER" EntitySet="MANAGE_USERGROUP_USER" />
+          </AssociationSet>
           <AssociationSet Name="FK_PAY_BORROW" Association="Self.FK_PAY_BORROW">
             <End Role="BORROW" EntitySet="BORROW" />
             <End Role="PAY" EntitySet="PAY" />
@@ -278,8 +399,7 @@
             <End Role="READERS" EntitySet="READERS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ManageLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -575,7 +695,136 @@
             <End Role="PAY" EntitySet="PAYs" />
             <End Role="DETAIL_PAY" EntitySet="DETAIL_PAY" />
           </AssociationSet>
+          <EntitySet Name="MANAGE_DECENTRALIZATION" EntityType="ManageLibraryModel.MANAGE_DECENTRALIZATION" />
+          <EntitySet Name="MANAGE_USER" EntityType="ManageLibraryModel.MANAGE_USER" />
+          <EntitySet Name="MANAGE_USERGROUP" EntityType="ManageLibraryModel.MANAGE_USERGROUP" />
+          <EntitySet Name="MANAGE_USERGROUP_USER" EntityType="ManageLibraryModel.MANAGE_USERGROUP_USER" />
+          <EntitySet Name="MONITORs" EntityType="ManageLibraryModel.MONITOR" />
+          <EntitySet Name="sysdiagrams" EntityType="ManageLibraryModel.sysdiagram" />
+          <AssociationSet Name="FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP" Association="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP">
+            <End Role="MANAGE_USERGROUP" EntitySet="MANAGE_USERGROUP" />
+            <End Role="MANAGE_DECENTRALIZATION" EntitySet="MANAGE_DECENTRALIZATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_DECENTRALIZATION_MONITOR" Association="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MONITOR">
+            <End Role="MONITOR" EntitySet="MONITORs" />
+            <End Role="MANAGE_DECENTRALIZATION" EntitySet="MANAGE_DECENTRALIZATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_USERGROUP_USER_MANAGE_USER" Association="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USER">
+            <End Role="MANAGE_USER" EntitySet="MANAGE_USER" />
+            <End Role="MANAGE_USERGROUP_USER" EntitySet="MANAGE_USERGROUP_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP" Association="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP">
+            <End Role="MANAGE_USERGROUP" EntitySet="MANAGE_USERGROUP" />
+            <End Role="MANAGE_USERGROUP_USER" EntitySet="MANAGE_USERGROUP_USER" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MANAGE_DECENTRALIZATION">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdGroup" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="IdMonitor" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Licensed" Type="Boolean" />
+          <NavigationProperty Name="MANAGE_USERGROUP" Relationship="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP" FromRole="MANAGE_DECENTRALIZATION" ToRole="MANAGE_USERGROUP" />
+          <NavigationProperty Name="MONITOR" Relationship="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MONITOR" FromRole="MANAGE_DECENTRALIZATION" ToRole="MONITOR" />
+        </EntityType>
+        <EntityType Name="MANAGE_USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="MANAGE_USERGROUP_USER" Relationship="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USER" FromRole="MANAGE_USER" ToRole="MANAGE_USERGROUP_USER" />
+        </EntityType>
+        <EntityType Name="MANAGE_USERGROUP">
+          <Key>
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdGroup" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="NameGroup" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="MANAGE_DECENTRALIZATION" Relationship="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP" FromRole="MANAGE_USERGROUP" ToRole="MANAGE_DECENTRALIZATION" />
+          <NavigationProperty Name="MANAGE_USERGROUP_USER" Relationship="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP" FromRole="MANAGE_USERGROUP" ToRole="MANAGE_USERGROUP_USER" />
+        </EntityType>
+        <EntityType Name="MANAGE_USERGROUP_USER">
+          <Key>
+            <PropertyRef Name="IdUser" />
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdUser" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="IdGroup" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="MANAGE_USER" Relationship="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USER" FromRole="MANAGE_USERGROUP_USER" ToRole="MANAGE_USER" />
+          <NavigationProperty Name="MANAGE_USERGROUP" Relationship="ManageLibraryModel.FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP" FromRole="MANAGE_USERGROUP_USER" ToRole="MANAGE_USERGROUP" />
+        </EntityType>
+        <EntityType Name="MONITOR">
+          <Key>
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdMonitor" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NameMonitor" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="MANAGE_DECENTRALIZATION" Relationship="ManageLibraryModel.FK_MANAGE_DECENTRALIZATION_MONITOR" FromRole="MONITOR" ToRole="MANAGE_DECENTRALIZATION" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_MANAGE_DECENTRALIZATION_MANAGE_USERGROUP">
+          <End Type="ManageLibraryModel.MANAGE_USERGROUP" Role="MANAGE_USERGROUP" Multiplicity="1" />
+          <End Type="ManageLibraryModel.MANAGE_DECENTRALIZATION" Role="MANAGE_DECENTRALIZATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USERGROUP">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="MANAGE_DECENTRALIZATION">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_DECENTRALIZATION_MONITOR">
+          <End Type="ManageLibraryModel.MONITOR" Role="MONITOR" Multiplicity="1" />
+          <End Type="ManageLibraryModel.MANAGE_DECENTRALIZATION" Role="MANAGE_DECENTRALIZATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITOR">
+              <PropertyRef Name="IdMonitor" />
+            </Principal>
+            <Dependent Role="MANAGE_DECENTRALIZATION">
+              <PropertyRef Name="IdMonitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_USERGROUP_USER_MANAGE_USER">
+          <End Type="ManageLibraryModel.MANAGE_USER" Role="MANAGE_USER" Multiplicity="1" />
+          <End Type="ManageLibraryModel.MANAGE_USERGROUP_USER" Role="MANAGE_USERGROUP_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USER">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="MANAGE_USERGROUP_USER">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANAGE_USERGROUP_USER_MANAGE_USERGROUP">
+          <End Type="ManageLibraryModel.MANAGE_USERGROUP" Role="MANAGE_USERGROUP" Multiplicity="1" />
+          <End Type="ManageLibraryModel.MANAGE_USERGROUP_USER" Role="MANAGE_USERGROUP_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANAGE_USERGROUP">
+              <PropertyRef Name="IdGroup" />
+            </Principal>
+            <Dependent Role="MANAGE_USERGROUP_USER">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -689,6 +938,61 @@
               <MappingFragment StoreEntitySet="TYPESOFBOOKS">
                 <ScalarProperty Name="idTypeOfBook" ColumnName="idTypeOfBook" />
                 <ScalarProperty Name="nameTypeOfBook" ColumnName="nameTypeOfBook" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGE_DECENTRALIZATION">
+            <EntityTypeMapping TypeName="ManageLibraryModel.MANAGE_DECENTRALIZATION">
+              <MappingFragment StoreEntitySet="MANAGE_DECENTRALIZATION">
+                <ScalarProperty Name="Licensed" ColumnName="Licensed" />
+                <ScalarProperty Name="IdMonitor" ColumnName="IdMonitor" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGE_USER">
+            <EntityTypeMapping TypeName="ManageLibraryModel.MANAGE_USER">
+              <MappingFragment StoreEntitySet="MANAGE_USER">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGE_USERGROUP">
+            <EntityTypeMapping TypeName="ManageLibraryModel.MANAGE_USERGROUP">
+              <MappingFragment StoreEntitySet="MANAGE_USERGROUP">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGE_USERGROUP_USER">
+            <EntityTypeMapping TypeName="ManageLibraryModel.MANAGE_USERGROUP_USER">
+              <MappingFragment StoreEntitySet="MANAGE_USERGROUP_USER">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONITORs">
+            <EntityTypeMapping TypeName="ManageLibraryModel.MONITOR">
+              <MappingFragment StoreEntitySet="MONITOR">
+                <ScalarProperty Name="NameMonitor" ColumnName="NameMonitor" />
+                <ScalarProperty Name="IdMonitor" ColumnName="IdMonitor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ManageLibraryModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
