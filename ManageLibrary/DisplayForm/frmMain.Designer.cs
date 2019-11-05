@@ -67,7 +67,7 @@
             // 
             // btnReport
             // 
-            this.btnReport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton4.ImageOptions.SvgImage")));
+            this.btnReport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnReport.ImageOptions.SvgImage")));
             this.btnReport.Location = new System.Drawing.Point(600, 3);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(94, 29);
@@ -76,7 +76,7 @@
             // 
             // btnSetting
             // 
-            this.btnSetting.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
+            this.btnSetting.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSetting.ImageOptions.SvgImage")));
             this.btnSetting.Location = new System.Drawing.Point(500, 3);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(94, 29);
@@ -85,7 +85,7 @@
             // 
             // btnList
             // 
-            this.btnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
+            this.btnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnList.ImageOptions.SvgImage")));
             this.btnList.Location = new System.Drawing.Point(400, 3);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(94, 29);
@@ -109,6 +109,7 @@
             this.btnReader.Size = new System.Drawing.Size(94, 29);
             this.btnReader.TabIndex = 23;
             this.btnReader.Text = "Reader";
+            this.btnReader.Click += new System.EventHandler(this.btnReader_Click);
             // 
             // btnCirculate
             // 
@@ -143,7 +144,7 @@
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1257, 820);
+            this.ClientSize = new System.Drawing.Size(1257, 749);
             this.Controls.Add(this.grbBtn);
             this.Controls.Add(this.pnShowMain);
             this.IsMdiContainer = true;

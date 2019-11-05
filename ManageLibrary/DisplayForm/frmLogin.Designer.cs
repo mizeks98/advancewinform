@@ -46,7 +46,7 @@
             this.btnSignup.Location = new System.Drawing.Point(216, 202);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(86, 36);
-            this.btnSignup.TabIndex = 0;
+            this.btnSignup.TabIndex = 3;
             this.btnSignup.Text = "Sign Up";
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
             // 
@@ -59,7 +59,7 @@
             this.lbUsername.Location = new System.Drawing.Point(107, 95);
             this.lbUsername.Name = "lbUsername";
             this.lbUsername.Size = new System.Drawing.Size(83, 23);
-            this.lbUsername.TabIndex = 3;
+            this.lbUsername.TabIndex = 0;
             this.lbUsername.Text = "Username";
             // 
             // lbPassword
@@ -71,7 +71,7 @@
             this.lbPassword.Location = new System.Drawing.Point(107, 138);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(80, 23);
-            this.lbPassword.TabIndex = 4;
+            this.lbPassword.TabIndex = 0;
             this.lbPassword.Text = "Password";
             // 
             // btnSignIn
@@ -81,7 +81,7 @@
             this.btnSignIn.Location = new System.Drawing.Point(342, 202);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(87, 36);
-            this.btnSignIn.TabIndex = 5;
+            this.btnSignIn.TabIndex = 4;
             this.btnSignIn.Text = "Sign In";
             // 
             // txtUsername
@@ -90,7 +90,7 @@
             this.txtUsername.Location = new System.Drawing.Point(228, 92);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(201, 32);
-            this.txtUsername.TabIndex = 6;
+            this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -99,7 +99,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(201, 32);
-            this.txtPassword.TabIndex = 7;
+            this.txtPassword.TabIndex = 2;
             // 
             // chkb_showpass
             // 
@@ -111,7 +111,7 @@
             this.chkb_showpass.Properties.Appearance.Options.UseForeColor = true;
             this.chkb_showpass.Properties.Caption = "show";
             this.chkb_showpass.Size = new System.Drawing.Size(75, 27);
-            this.chkb_showpass.TabIndex = 8;
+            this.chkb_showpass.TabIndex = 6;
             this.chkb_showpass.CheckedChanged += new System.EventHandler(this.chkb_showpass_CheckedChanged);
             // 
             // Login

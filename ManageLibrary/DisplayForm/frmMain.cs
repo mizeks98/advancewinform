@@ -79,6 +79,11 @@ namespace ManageLibrary
             {
             }
         }
+
+        private void btnReader_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     
