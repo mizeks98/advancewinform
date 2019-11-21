@@ -3,23 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
-using System.Linq;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace ManageLibrary.DisplayForm
 {
-    public partial class ucBooks : UserControl
+    public partial class Circulate : DevExpress.XtraEditors.XtraUserControl
     {
-        public ucBooks()
+        public Circulate()
         {
             InitializeComponent();
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

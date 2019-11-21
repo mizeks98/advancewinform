@@ -82,7 +82,20 @@ namespace ManageLibrary
 
         private void btnReader_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                foreach (System.Windows.Forms.UserControl uc in pnShowMain.Controls)
+                {
+                    pnShowMain.Controls.Remove(uc);
+                }
+                ucReadercs ucI = new ucReadercs();
+                ucI.Dock = DockStyle.Fill;
+                pnShowMain.Controls.Add(ucI);
+                pnShowMain.Controls["ucReadercs"].BringToFront();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 
