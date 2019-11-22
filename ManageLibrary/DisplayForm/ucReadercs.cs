@@ -21,7 +21,7 @@ namespace ManageLibrary.DisplayForm
 
         private void btnAddReader_Click(object sender, EventArgs e)
         {
-            AddReader frm = new AddReader();
+            frmInfoReader frm = new frmInfoReader();
             frm.ShowDialog();
         }
     }

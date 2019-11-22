@@ -166,17 +166,17 @@
     <Compile Include="Database\TYPESOFBOOK.cs">
       <DependentUpon>DatabaseEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="DisplayForm\AddReader.cs">
+    <Compile Include="DisplayForm\frmInfoReader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DisplayForm\AddReader.Designer.cs">
-      <DependentUpon>AddReader.cs</DependentUpon>
+    <Compile Include="DisplayForm\frmInfoReader.Designer.cs">
+      <DependentUpon>frmInfoReader.cs</DependentUpon>
     </Compile>
-    <Compile Include="DisplayForm\Circulate.cs">
+    <Compile Include="DisplayForm\ucCirculate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DisplayForm\Circulate.Designer.cs">
-      <DependentUpon>Circulate.cs</DependentUpon>
+    <Compile Include="DisplayForm\ucCirculate.Designer.cs">
+      <DependentUpon>ucCirculate.cs</DependentUpon>
     </Compile>
     <Compile Include="DisplayForm\frmLogin.cs">
       <SubType>Form</SubType>
@@ -210,11 +210,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DisplayForm\AddReader.resx">
-      <DependentUpon>AddReader.cs</DependentUpon>
+    <EmbeddedResource Include="DisplayForm\frmInfoReader.resx">
+      <DependentUpon>frmInfoReader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DisplayForm\Circulate.resx">
-      <DependentUpon>Circulate.cs</DependentUpon>
+    <EmbeddedResource Include="DisplayForm\ucCirculate.resx">
+      <DependentUpon>ucCirculate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DisplayForm\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

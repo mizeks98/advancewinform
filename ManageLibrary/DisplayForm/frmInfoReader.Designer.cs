@@ -1,6 +1,6 @@
 ﻿namespace ManageLibrary.DisplayForm
 {
-    partial class AddReader
+    partial class frmInfoReader
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddReader));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfoReader));
             this.panel1 = new System.Windows.Forms.Panel();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
@@ -451,7 +451,7 @@
             this.btnAddReader.Name = "btnAddReader";
             this.btnAddReader.Size = new System.Drawing.Size(91, 40);
             this.btnAddReader.TabIndex = 0;
-            this.btnAddReader.Text = "Add";
+            this.btnAddReader.Text = "Save";
             // 
             // btnClose
             // 
@@ -466,7 +466,7 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             // 
-            // AddReader
+            // infoReader
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Appearance.ForeColor = System.Drawing.Color.Blue;
@@ -480,7 +480,7 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.Name = "AddReader";
+            this.Name = "infoReader";
             this.Text = "AddReader";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).EndInit();

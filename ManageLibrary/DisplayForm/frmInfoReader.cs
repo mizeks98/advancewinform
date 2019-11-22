@@ -11,9 +11,9 @@ using DevExpress.XtraEditors;
 
 namespace ManageLibrary.DisplayForm
 {
-    public partial class AddReader : DevExpress.XtraEditors.XtraForm
+    public partial class frmInfoReader : DevExpress.XtraEditors.XtraForm
     {
-        public AddReader()
+        public frmInfoReader()
         {
             InitializeComponent();
         }

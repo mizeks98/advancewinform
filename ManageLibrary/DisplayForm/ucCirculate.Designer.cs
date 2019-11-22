@@ -1,6 +1,6 @@
 ﻿namespace ManageLibrary.DisplayForm
 {
-    partial class Circulate
+    partial class ucCirculate
     {
         /// <summary> 
         /// Required designer variable.

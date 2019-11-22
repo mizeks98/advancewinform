@@ -11,9 +11,9 @@ using DevExpress.XtraEditors;
 
 namespace ManageLibrary.DisplayForm
 {
-    public partial class Circulate : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucCirculate : DevExpress.XtraEditors.XtraUserControl
     {
-        public Circulate()
+        public ucCirculate()
         {
             InitializeComponent();
         }

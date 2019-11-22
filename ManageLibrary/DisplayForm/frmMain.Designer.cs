@@ -44,9 +44,9 @@
             // 
             // pnShowMain
             // 
-            this.pnShowMain.Location = new System.Drawing.Point(12, 92);
+            this.pnShowMain.Location = new System.Drawing.Point(12, 52);
             this.pnShowMain.Name = "pnShowMain";
-            this.pnShowMain.Size = new System.Drawing.Size(1233, 716);
+            this.pnShowMain.Size = new System.Drawing.Size(1233, 756);
             this.pnShowMain.TabIndex = 0;
             // 
             // grbBtn
@@ -59,7 +59,7 @@
             this.grbBtn.Controls.Add(this.btnCirculate);
             this.grbBtn.Controls.Add(this.btnBook);
             this.grbBtn.Controls.Add(this.btnWorkArea);
-            this.grbBtn.Location = new System.Drawing.Point(12, 52);
+            this.grbBtn.Location = new System.Drawing.Point(12, 12);
             this.grbBtn.Name = "grbBtn";
             this.grbBtn.Size = new System.Drawing.Size(695, 34);
             this.grbBtn.TabIndex = 13;
