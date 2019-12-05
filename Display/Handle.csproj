@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\DatabaseEntity.Context.tt" />
+    <None Remove="DataBase\DatabaseEntity.tt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DataBase\DatabaseEntity.Context.tt">
+      <DependentUpon>DatabaseEntity.edmx</DependentUpon>
+      <LastGenOutput>DatabaseEntity.Context.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="DataBase\DatabaseEntity.tt">
+      <DependentUpon>DatabaseEntity.edmx</DependentUpon>
+      <LastGenOutput>DatabaseEntity.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="DataBase\AUTHOR.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\BOOK.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\BORROW.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\CARD.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\CLASS.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\DatabaseEntity.Context.cs">
+      <DependentUpon>DatabaseEntity.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="DataBase\DatabaseEntity.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="DataBase\DatabaseEntity.Designer.cs">
+      <DependentUpon>DatabaseEntity.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="DataBase\DETAIL_BORROW.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\EMPLOYEE.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\MANAGE_DECENTRALIZATION.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\MANAGE_USER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\MANAGE_USERGROUP.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\MANAGE_USERGROUP_USER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\MONITOR.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\PAY.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\PUBLISHER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\READER.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\sysdiagram.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Update="DataBase\TYPESOFBOOK.cs">
+      <DependentUpon>DatabaseEntity.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DataBase\DatabaseEntity.edmx.diagram">
+      <DependentUpon>DatabaseEntity.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21C539F7-F175-40BA-A927-5381B212C461}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Handle</RootNamespace>
+    <AssemblyName>Handle</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\BookDAL.cs" />
+    <Compile Include="DAL\CardDAL.cs" />
+    <Compile Include="DAL\ClassDAL.cs" />
+    <Compile Include="BUS\READER.cs" />
+    <Compile Include="DAL\ReaderDAL.cs" />
+    <Compile Include="DataBase\AUTHOR.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\BOOK.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\BORROW.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\CARD.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\CLASS.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Connection.cs" />
+    <Compile Include="DataBase\DataBaseEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DataBaseEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DataBaseEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DETAIL_BORROW.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\EMPLOYEE.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MANAGE_DECENTRALIZATION.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MANAGE_USER.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MANAGE_USERGROUP.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MANAGE_USERGROUP_USER.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\MONITOR.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\PAY.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\PUBLISHER.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\READER.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\sysdiagram.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\TYPESOFBOOK.cs">
+      <DependentUpon>DataBaseEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataBase\DataBaseEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataBaseEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DataBase\DataBaseEntity.edmx.diagram">
+      <DependentUpon>DataBaseEntity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataBase\DataBaseEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataBaseEntity.Context.cs</LastGenOutput>
+      <DependentUpon>DataBaseEntity.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataBase\DataBaseEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBaseEntity.edmx</DependentUpon>
+      <LastGenOutput>DataBaseEntity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
