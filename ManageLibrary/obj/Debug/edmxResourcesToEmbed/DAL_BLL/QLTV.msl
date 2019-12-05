@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTVModelStoreContainer" CdmEntityContainer="QLTVEntities">
+    <EntitySetMapping Name="AUTHORS">
+      <EntityTypeMapping TypeName="QLTVModel.AUTHOR">
+        <MappingFragment StoreEntitySet="AUTHORS">
+          <ScalarProperty Name="idAuthor" ColumnName="idAuthor" />
+          <ScalarProperty Name="nameAuthor" ColumnName="nameAuthor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKS">
+      <EntityTypeMapping TypeName="QLTVModel.BOOK">
+        <MappingFragment StoreEntitySet="BOOKS">
+          <ScalarProperty Name="idBook" ColumnName="idBook" />
+          <ScalarProperty Name="nameBook" ColumnName="nameBook" />
+          <ScalarProperty Name="yearRealeas" ColumnName="yearRealeas" />
+          <ScalarProperty Name="idPublisher" ColumnName="idPublisher" />
+          <ScalarProperty Name="idAuthor" ColumnName="idAuthor" />
+          <ScalarProperty Name="idTypeOfBook" ColumnName="idTypeOfBook" />
+          <ScalarProperty Name="numberBook" ColumnName="numberBook" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BORROWs">
+      <EntityTypeMapping TypeName="QLTVModel.BORROW">
+        <MappingFragment StoreEntitySet="BORROW">
+          <ScalarProperty Name="idBorrow" ColumnName="idBorrow" />
+          <ScalarProperty Name="idCard" ColumnName="idCard" />
+          <ScalarProperty Name="moneyDesposit" ColumnName="moneyDesposit" />
+          <ScalarProperty Name="numberBorrow" ColumnName="numberBorrow" />
+          <ScalarProperty Name="borrowDate" ColumnName="borrowDate" />
+          <ScalarProperty Name="announcePayDate" ColumnName="announcePayDate" />
+          <ScalarProperty Name="idEmployees" ColumnName="idEmployees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARDS">
+      <EntityTypeMapping TypeName="QLTVModel.CARD">
+        <MappingFragment StoreEntitySet="CARDS">
+          <ScalarProperty Name="idCard" ColumnName="idCard" />
+          <ScalarProperty Name="realeassDate" ColumnName="realeassDate" />
+          <ScalarProperty Name="idReader" ColumnName="idReader" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLASSES">
+      <EntityTypeMapping TypeName="QLTVModel.CLASS">
+        <MappingFragment StoreEntitySet="CLASSES">
+          <ScalarProperty Name="idClass" ColumnName="idClass" />
+          <ScalarProperty Name="nameClass" ColumnName="nameClass" />
+          <ScalarProperty Name="lever" ColumnName="lever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETAIL_BORROW">
+      <EntityTypeMapping TypeName="QLTVModel.DETAIL_BORROW">
+        <MappingFragment StoreEntitySet="DETAIL_BORROW">
+          <ScalarProperty Name="idDetailBorrow" ColumnName="idDetailBorrow" />
+          <ScalarProperty Name="idBorrow" ColumnName="idBorrow" />
+          <ScalarProperty Name="idBook" ColumnName="idBook" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES">
+      <EntityTypeMapping TypeName="QLTVModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEES">
+          <ScalarProperty Name="idEmployees" ColumnName="idEmployees" />
+          <ScalarProperty Name="nameEmployees" ColumnName="nameEmployees" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGE_DECENTRALIZATION">
+      <EntityTypeMapping TypeName="QLTVModel.MANAGE_DECENTRALIZATION">
+        <MappingFragment StoreEntitySet="MANAGE_DECENTRALIZATION">
+          <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+          <ScalarProperty Name="IdMonitor" ColumnName="IdMonitor" />
+          <ScalarProperty Name="Licensed" ColumnName="Licensed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGE_USER">
+      <EntityTypeMapping TypeName="QLTVModel.MANAGE_USER">
+        <MappingFragment StoreEntitySet="MANAGE_USER">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGE_USERGROUP">
+      <EntityTypeMapping TypeName="QLTVModel.MANAGE_USERGROUP">
+        <MappingFragment StoreEntitySet="MANAGE_USERGROUP">
+          <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+          <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGE_USERGROUP_USER">
+      <EntityTypeMapping TypeName="QLTVModel.MANAGE_USERGROUP_USER">
+        <MappingFragment StoreEntitySet="MANAGE_USERGROUP_USER">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MONITORs">
+      <EntityTypeMapping TypeName="QLTVModel.MONITOR">
+        <MappingFragment StoreEntitySet="MONITOR">
+          <ScalarProperty Name="IdMonitor" ColumnName="IdMonitor" />
+          <ScalarProperty Name="NameMonitor" ColumnName="NameMonitor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYs">
+      <EntityTypeMapping TypeName="QLTVModel.PAY">
+        <MappingFragment StoreEntitySet="PAY">
+          <ScalarProperty Name="idPayCard" ColumnName="idPayCard" />
+          <ScalarProperty Name="payDate" ColumnName="payDate" />
+          <ScalarProperty Name="numberPay" ColumnName="numberPay" />
+          <ScalarProperty Name="idBorrow" ColumnName="idBorrow" />
+          <ScalarProperty Name="idEmployees" ColumnName="idEmployees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUBLISHERS">
+      <EntityTypeMapping TypeName="QLTVModel.PUBLISHER">
+        <MappingFragment StoreEntitySet="PUBLISHERS">
+          <ScalarProperty Name="idPublisher" ColumnName="idPublisher" />
+          <ScalarProperty Name="namePublisher" ColumnName="namePublisher" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="READERS">
+      <EntityTypeMapping TypeName="QLTVModel.READER">
+        <MappingFragment StoreEntitySet="READERS">
+          <ScalarProperty Name="idReader" ColumnName="idReader" />
+          <ScalarProperty Name="nameReader" ColumnName="nameReader" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="idClass" ColumnName="idClass" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TYPESOFBOOKS">
+      <EntityTypeMapping TypeName="QLTVModel.TYPESOFBOOK">
+        <MappingFragment StoreEntitySet="TYPESOFBOOKS">
+          <ScalarProperty Name="idTypeOfBook" ColumnName="idTypeOfBook" />
+          <ScalarProperty Name="nameTypeOfBook" ColumnName="nameTypeOfBook" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DETAIL_PAY" TypeName="QLTVModel.DETAIL_PAY" StoreEntitySet="DETAIL_PAY">
+      <EndProperty Name="DETAIL_BORROW">
+        <ScalarProperty Name="idDetailBorrow" ColumnName="idDetailBorrow" />
+      </EndProperty>
+      <EndProperty Name="PAY">
+        <ScalarProperty Name="idPayCard" ColumnName="idPay" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
